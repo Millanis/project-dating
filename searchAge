@@ -1,0 +1,16 @@
+searchAge = do
+     putStrLn "\n Please type the age interval of the person you're looking for: \n"
+     age <- getLine
+     let option = if (checkDigits age == True)
+                        then read age
+                        else 9 
+     if (elem option [0..])
+        then do
+            input <- readFile $ "databas.txt"
+            putStrLn "\n Here are all the people that matches your search: \n"
+            let people = parse input
+                output = map personToString (filter (\p -> personAge p == read age) people)
+                in putStrLn (unlines output)
+
+        else do putStrLn "\n Sorry, that's not an option. Try again with a number!"  
+                searchDatabase
