@@ -1,0 +1,60 @@
+import Data.Char 
+
+kons = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVNM" 
+veral = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+gemen:: Char -> Char
+gemen 'A' = 'a'
+gemen 'B' = 'b'
+gemen 'C' = 'c'
+gemen 'D' = 'd'
+gemen 'E' = 'e'
+gemen 'F' = 'f'
+gemen 'G' = 'g'
+gemen 'H' = 'h'
+gemen 'I' = 'i'
+gemen 'J' = 'j'
+gemen 'K' = 'k'
+gemen 'L' = 'l'
+gemen 'M' = 'm'
+gemen 'N' = 'n'
+gemen 'O' = 'o'
+gemen 'P' = 'p'
+gemen 'Q' = 'q'
+gemen 'R' = 'r'
+gemen 'S' = 's'
+gemen 'T' = 't'
+gemen 'U' = 'u'
+gemen 'V' = 'v'
+gemen 'W' = 'W'
+gemen 'X' = 'x'
+gemen 'Y' = 'y'
+gemen 'Z' = 'z'
+gemen _ = 'a'
+
+
+
+dial = do -- låt svaret på förste bli name
+    putStrLn "Hello, what's your name?"
+    name <- getLine
+    putStrLn ("Hi there " ++ name ++ "!")
+    putStrLn "Where do you live?"
+    place <- getLine
+    putStrLn ("Oh really " ++ name ++ ", so do I!")
+    putStrLn ("Do you wanna switch to swedish?")
+    svar <- getLine
+    if svar == "yes" then putStrLn ("Kanon, då gör vi det!") else print ("English is just as good!")
+    putStrLn ("Vad ska du göra i helgen " ++ name ++ "?")
+    putStrLn ("Tänkte om du ville ses!")
+    svar <- getLine
+    if svar == "ja" then print ("Kul!") else print ("Kanske en annan gång då!")
+    putStrLn ("Nu måste jag iväg, men vi snackar mer en annan gång")
+    hejda <- getLine
+    putStrLn ("hejdå" ++ " Emoji smile")
+    
+    
+perify :: [Char] -> [Char]
+perify xs
+        | (head (xs)) == 'P' = ", " ++ xs
+        | (head (xs)) `notElem` kons = ", P" ++ [(gemen (head (xs)))] ++ (tail (xs))
+        | otherwise = ", P" ++ (tail (xs))
